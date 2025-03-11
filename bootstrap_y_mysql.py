@@ -64,17 +64,6 @@ def conectar_base():
         elif language_idioma is False:
             messagebox.showwarning("Error", message=f"Error connecting to MySQL: \n\n{err}")
 
-#***************************************************************
-# Hacer pruebas con los errores que surjan del conector de MySQL
-# Make some testing errors arising from the MySQL connector
-#***************************************************************
-#def errordebasededatos(error): # //////////////////// Estos eran errores de sqlite3 ////////////////////
-#    error=str(error) #------------------------------- These were sqlite3 errors
-#    if error=="incomplete input":
-#        messagebox.showwarning("Error", message=f"Error: {error}\n\nNo deje espacios vacios o las funciones no serviran excepto la de Buscar.")
-#    elif error=="no such table: Libreria":
-#        messagebox.showwarning("Error", message=f"Error: {error}\n\nConecte la base de datos primero para poder usar las funciones.\n(Archivo BBDD -> Conectar)")
-
 def salir():
     if language_idioma is True:
         valor=messagebox.askquestion("Salir", "Desea salir del programa?")
@@ -108,6 +97,7 @@ def about():
         messagebox.showinfo("Thank you for using my program", "Made in Python by \nJavier Corrales\n\nContact:\nlaboral.corrales@gmail.com")
 
 def buscar():
+    global total_Label
     try:
         if variableCod_Prod.get()!="":
             busqueda=0
@@ -159,6 +149,7 @@ def buscar():
 
 def mostrar_total():
     global total_final
+    global total_Label
     IVA=21
     DESCUENTO=15
     precioCosto=0
@@ -365,6 +356,7 @@ def actualizar():
         conexion.rollback()
 
 def limpiar():
+    global total_Label
     variableCod_Prod.set("")
     variableProd.set("")
     variableEditorial.set("")
@@ -445,6 +437,7 @@ def dest():
     #-------
     global hint
     global boton_calcular
+    global total_Label
     #-------
     global lineademenu
     global accesoBD
@@ -475,6 +468,7 @@ def dest():
     #-------
     hint.destroy()
     boton_calcular.destroy()
+    total_Label.destroy()
     #-------
     lineademenu.destroy()
     accesoBD.destroy()
@@ -511,6 +505,7 @@ def esp(): # ////////////////////////// Destruir los widgets y rehacerlos en el 
     #-------
     global hint
     global boton_calcular
+    global total_Label
     #-------
     global lineademenu
     global accesoBD
@@ -640,6 +635,7 @@ def eng(): # ////////////////////////// Destroy widgets and remake them in the s
     #-------
     global hint
     global boton_calcular
+    global total_Label
     #-------
     global lineademenu
     global accesoBD
@@ -846,6 +842,7 @@ ofertaNo.grid(row=6, column=1, padx=30, pady=8)
 #----------------------------------------------------------------------------------------------------///>>
 global hint
 global boton_calcular
+global total_Label
 #-------
 hint=ttk.Label(raiz, text="El botón Calcular tambien sirve para guardar")
 hint.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
