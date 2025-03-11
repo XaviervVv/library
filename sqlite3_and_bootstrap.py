@@ -79,6 +79,7 @@ def about():
         messagebox.showinfo("Thank you for using my program", "Made in Python by \nJavier Corrales\n\nContact:\nlaboral.corrales@gmail.com")
 
 def buscar():
+    global total_Label
     try:
         busqueda=0
         conectar=sqlite3.connect("BD_themed.db")
@@ -112,6 +113,7 @@ def buscar():
 
 def mostrar_total():
     global total_final
+    global total_Label
     IVA=21
     DESCUENTO=15
     precioCosto=0
@@ -272,6 +274,7 @@ def actualizar():
         errordebasededatos(e_a)
 
 def limpiar():
+    global total_Label
     variableCod_Prod.set("")
     variableProd.set("")
     variableEditorial.set("")
@@ -340,6 +343,7 @@ def dest():
     #-------
     global hint
     global boton_calcular
+    global total_Label
     #-------
     global lineademenu
     global accesoBD
@@ -370,6 +374,7 @@ def dest():
     #-------
     hint.destroy()
     boton_calcular.destroy()
+    total_Label.destroy()
     #-------
     lineademenu.destroy()
     accesoBD.destroy()
@@ -406,6 +411,7 @@ def esp(): # ////////////////////////// Destruir los widgets y rehacerlos en el 
     #-------
     global hint
     global boton_calcular
+    global total_Label
     #-------
     global lineademenu
     global accesoBD
@@ -535,6 +541,7 @@ def eng(): # ////////////////////////// Destroy widgets and remake them in the s
     #-------
     global hint
     global boton_calcular
+    global total_Label
     #-------
     global lineademenu
     global accesoBD
@@ -741,6 +748,7 @@ ofertaNo.grid(row=6, column=1, padx=30, pady=8)
 #----------------------------------------------------------------------------------------------------///>>
 global hint
 global boton_calcular
+global total_Label
 #-------
 hint=ttk.Label(raiz, text="El botón Calcular tambien sirve para guardar")
 hint.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
